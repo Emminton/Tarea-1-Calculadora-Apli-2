@@ -1,0 +1,51 @@
+﻿@page "/Calculadora"
+@using OperacionesMatematicas.Data
+
+<h3>Calculadora</h3>
+
+<EditForm Model="datos">
+    <DataAnnotationsValidator />
+
+    <div class="input-group">
+        Digite el Primer Numero: <InputNumber @bind-Value=@datos.numero1 class="from-control"></InputNumber>
+    </div>
+
+    <div class="input-group">
+        Digite el segundo numero: <InputNumber @bind-Value=@datos.numero2 clase="from-control"></InputNumber>
+    </div>
+
+    <p class="Resultado">
+        Resultado es: <InputNumber @bind-Value="datos.resultado" class="from-control" readonly="true" />
+    </p>
+
+    <div class="from-group">
+        <button class="btn btn-primary" @onclick="Multiplicacion">Multiplicar</button>
+        <button class="btn btn-danger" @onclick="Suma">Sumar</button>
+        <button class="btn btn-secondary" @onclick="Resta">Restar</button>
+    </div>
+
+
+</EditForm>
+
+@code {
+    Datos datos = new Datos();
+
+
+    private void Multiplicacion()
+    {
+
+        datos.resultado = datos.numero1 * datos.numero2;
+    }
+
+    private void Suma()
+    {
+
+        datos.resultado = datos.numero1 + datos.numero2;
+    }
+
+    private void Resta()
+    {
+
+        datos.resultado = datos.numero1 - datos.numero2;
+    }
+}
